@@ -1,0 +1,484 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "../styles/fonts.css";
+
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Hide Webkit scrollbar but keep scrolling */
+
+@theme {
+  /* Custom CSS Class Starts */
+  --color-themeBGLight: #fff !important;
+  --color-themeBGDark: #0B0C14 !important;
+  --color-themeBGDarkLight: #0F121B !important;
+  --color-themePrimary: #135ce9 !important;
+  --color-CadetGrey: #939DB8 !important;
+  --color-InputBGDark: #727DA1 !important;
+  --color-InputTextDark: #202331 !important;
+
+  --color-themeGray: #1c1c1c !important;
+  --color-themeRed: #f4f8ff !important;
+  --color-red: #ff0000 !important;
+  --color-skeletonPrimary: #a4a4a4 !important;
+/* 
+  --color-themeDisableIconColor: #5a5a5a !important;
+
+  --color-themeBorderColor: #ffffff !important;
+  --color-lightGray: #6d758f !important;
+
+  --color-themeBlueLight: #c9ddef !important;
+  --color-themeBlue: #3a648a !important; */
+
+  --color-themeSidebarBg: #e8edf2;
+
+  --color-themeGradientColorFrom: #135ce9;
+  --color-themeGradientColorTo: #0954ec;
+  /* Custom CSS Class Ends */
+  --font-*: initial;
+  --font-outfit: Outfit, Poppins;
+  --font-syne: "Syne", sans-serif;
+  --font-alexandria: "Alexandria", sans-serif;
+  --font-nunito: "Nunito", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-anton: "Anton", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  --breakpoint-*: initial;
+  --breakpoint-2xsm: 375px;
+  --breakpoint-xsm: 425px;
+  --breakpoint-3xl: 2000px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1800px;
+
+  --breakpoint-5xl: 2000px;
+
+  --text-title-2xl: 72px;
+  --text-title-2xl--line-height: 90px;
+  --text-title-xl: 60px;
+  --text-title-xl--line-height: 72px;
+  --text-title-lg: 48px;
+  --text-title-lg--line-height: 60px;
+  --text-title-md: 36px;
+  --text-title-md--line-height: 44px;
+  --text-title-sm: 30px;
+  --text-title-sm--line-height: 38px;
+  --text-theme-xl: 20px;
+  --text-theme-xl--line-height: 30px;
+  --text-theme-sm: 14px;
+  --text-theme-sm--line-height: 20px;
+  --text-theme-xs: 12px;
+  --text-theme-xs--line-height: 18px;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-themeBrand: #465fff;
+
+  --color-brand-25: #f2f7ff;
+  --color-brand-50: #ecf3ff;
+  --color-brand-100: #dde9ff;
+  --color-brand-200: #c2d6ff;
+  --color-brand-300: #9cb9ff;
+  --color-brand-400: #7592ff;
+  --color-brand-500: #465fff;
+  --color-brand-600: #3641f5;
+  --color-brand-700: #2a31d8;
+  --color-brand-800: #252dae;
+  --color-brand-900: #262e89;
+  --color-brand-950: #161950;
+
+  --color-blue-light-25: #f5fbff;
+  --color-blue-light-50: #f0f9ff;
+  --color-blue-light-100: #e0f2fe;
+  --color-blue-light-200: #b9e6fe;
+  --color-blue-light-300: #7cd4fd;
+  --color-blue-light-400: #36bffa;
+  --color-blue-light-500: #0ba5ec;
+  --color-blue-light-600: #0086c9;
+  --color-blue-light-700: #026aa2;
+  --color-blue-light-800: #065986;
+  --color-blue-light-900: #0b4a6f;
+  --color-blue-light-950: #062c41;
+
+  --color-gray-25: #fcfcfd;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f2f4f7;
+  --color-gray-200: #e4e7ec;
+  --color-gray-300: #d0d5dd;
+  --color-gray-400: #a4a4a4;
+  --color-gray-500: #5a5a5a;
+  --color-gray-600: #475467;
+  --color-gray-700: #344054;
+  --color-gray-800: #1d2939;
+  --color-gray-900: #101828;
+  --color-gray-950: #0c111d;
+
+  --color-orange-25: #fffaf5;
+  --color-orange-50: #fff6ed;
+  --color-orange-100: #ffead5;
+  --color-orange-200: #fddcab;
+  --color-orange-300: #feb273;
+  --color-orange-400: #fd853a;
+  --color-orange-500: #fb6514;
+  --color-orange-600: #ec4a0a;
+  --color-orange-700: #c4320a;
+  --color-orange-800: #9c2a10;
+  --color-orange-900: #7e2410;
+  --color-orange-950: #511c10;
+
+  --color-success-25: #f6fef9;
+  --color-success-50: #ecfdf3;
+  --color-success-100: #d1fadf;
+  --color-success-200: #a6f4c5;
+  --color-success-300: #6ce9a6;
+  --color-success-400: #32d583;
+  --color-success-500: #12b76a;
+  --color-success-600: #039855;
+  --color-success-700: #027a48;
+  --color-success-800: #05603a;
+  --color-success-900: #054f31;
+  --color-success-950: #053321;
+
+  --color-error-25: #fffbfa;
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee4e2;
+  --color-error-200: #fecdca;
+  --color-error-300: #fda29b;
+  --color-error-400: #f97066;
+  --color-error-500: #f04438;
+  --color-error-600: #d92d20;
+  --color-error-700: #b42318;
+  --color-error-800: #912018;
+  --color-error-900: #7a271a;
+  --color-error-950: #55160c;
+
+  --color-warning-25: #fffcf5;
+  --color-warning-50: #fffaeb;
+  --color-warning-100: #fef0c7;
+  --color-warning-200: #fedf89;
+  --color-warning-300: #fec84b;
+  --color-warning-400: #fdb022;
+  --color-warning-500: #f79009;
+  --color-warning-600: #dc6803;
+  --color-warning-700: #b54708;
+  --color-warning-800: #93370d;
+  --color-warning-900: #7a2e0e;
+  --color-warning-950: #4e1d09;
+
+  --color-theme-pink-500: #ee46bc;
+
+  --color-theme-purple-500: #7a5af8;
+
+  --shadow-theme-md: 0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+    0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-theme-lg: 0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+    0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-theme-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+  --shadow-theme-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-theme-xl: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
+    0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+  --shadow-datepicker: -5px 0 0 #262d3c, 5px 0 0 #262d3c;
+  --shadow-focus-ring: 0px 0px 0px 4px rgba(70, 95, 255, 0.12);
+  --shadow-slider-navigation: 0px 1px 2px 0px rgba(16, 24, 40, 0.1),
+    0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+  --shadow-tooltip: 0px 4px 6px -2px rgba(16, 24, 40, 0.05),
+    -8px 0px 20px 8px rgba(16, 24, 40, 0.05);
+
+  --drop-shadow-4xl: 0 35px 35px rgba(0, 0, 0, 0.25),
+    0 45px 65px rgba(0, 0, 0, 0.15);
+
+  --z-index-1: 1;
+  --z-index-9: 9;
+  --z-index-99: 99;
+  --z-index-999: 999;
+  --z-index-9999: 9999;
+  --z-index-99999: 99999;
+  --z-index-999999: 999999;
+}
+
+@theme inline {
+  /* --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  --mask-image: linear-gradient(to_right, transparent, white_15%, white_85%, transparent); */
+
+  /* @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  } */
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  body {
+    position: relative;
+    font-family: "Alexandria", sans-serif;
+    font-weight: 400;
+    z-index: 1;
+    background-color: var(--color-themeBackgroundColor);
+  }
+
+  .dark body {
+    background-color: var(--color-themeBackgroundColorDark);
+  }
+}
+
+@layer utilities {
+  /* For Remove Date Icon */
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="time"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  /* Hide all scrollbars */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  html,
+  body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* src/index.css */
+.font-clash {
+  font-family: "Clash Display Variable", system-ui, sans-serif;
+}
+
+/*  Button starts */
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  height: 10px;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: calc(4px / 2);
+  color: inherit;
+  opacity: 1;
+  transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
+}
+
+/***** Collapse Animation *****/
+
+.bar--top {
+  bottom: calc(50% + 11px + 4px / 2);
+  transition-property: bottom, margin, transform;
+  transition-delay: calc(0s + 0.1s), 0s, 0s;
+}
+
+.bar--middle {
+  top: calc(50% - 4px / 2);
+  transition-property: top, opacity;
+  transition-duration: 0.35s, 0s;
+  transition-delay: calc(0s + 0.1s * 1.3), calc(0s + 0.1s * 1.3);
+}
+
+.bar--bottom {
+  top: calc(50% + 11px + 4px / 2);
+  transition-property: top, transform;
+  transition-delay: 0s;
+}
+
+#checkbox:checked + .toggle .bar--top {
+  bottom: calc(50% - 11px - 4px);
+  margin-bottom: calc(11px + 4px / 2);
+  transform: rotate(45deg);
+  transition-delay: calc(0s + 0.1s * 0.3), calc(0s + 0.1s * 1.3),
+    calc(0s + 0.1s * 1.3);
+}
+
+#checkbox:checked + .toggle .bar--middle {
+  top: calc(50% + 11px);
+  opacity: 0;
+  transition-duration: 0.35s, 0s;
+  transition-delay: 0s, calc(0s + 0.1s);
+}
+
+#checkbox:checked + .toggle .bar--bottom {
+  top: calc(50% - 4px / 2);
+  transform: rotate(-45deg);
+  transition-delay: calc(0s + 0.1s * 1.3), calc(0s + 0.1s * 1.3);
+}
+/* Theme Toggler Button ends */
+
+.swiper-cards .swiper-slide {
+  background: none !important; /* removes grey background */
+}
+
+.swiper-cards .swiper-slide-shadow,
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none !important; /* removes shadow overlays */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111 !important; /* ensure text color matches */
+  transition: background-color 5000s ease-in-out 0s; /* hack to override autofill */
+}
+/* Floating particles */
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+.animate-floating {
+  animation: floating 2s ease-in-out infinite;
+}
+
+/* Stroke draw animation */
+@keyframes draw {
+  0% {
+    stroke-dasharray: 0 200;
+  }
+  100% {
+    stroke-dasharray: 200 200;
+    fill: white;
+  }
+}
+.animate-draw {
+  animation: draw 1s forwards;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  } /* -50% because we duplicate the full list */
+}
+
+/* This class is toggled by the component when started */
+.animate-scroll {
+  animation-name: infinite-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* duration & direction come from inline CSS variables set by the component */
+  animation-duration: var(--animation-duration, 40s);
+  animation-direction: var(--animation-direction, normal);
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #000 !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox specific */
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px white inset !important;
+    -moz-text-fill-color: #000 !important;
+}
+
+
+.menu-item {
+  @apply flex items-center gap-3 w-full rounded-md px-3 py-2 font-medium transition-all duration-200;
+}
+
+.menu-item-inactive {
+  @apply text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800;
+}
+
+.menu-item-active {
+  @apply text-brand-600 bg-gray-100 dark:bg-gray-800 dark:text-brand-400;
+}
+
+.menu-item-icon-size {
+  @apply w-6 h-6;
+}
+
+.menu-item-icon-inactive {
+  @apply text-gray-400 group-hover:text-gray-700 dark:text-gray-500 dark:group-hover:text-gray-200;
+}
+
+.menu-item-icon-active {
+  @apply text-brand-600 dark:text-brand-400;
+}
+
+.menu-item-text {
+  @apply text-sm;
+}
+
+.menu-dropdown-item {
+  @apply flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors duration-200;
+}
+
+.menu-dropdown-item-inactive {
+  @apply text-gray-500 hover:text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800;
+}
+
+.menu-dropdown-item-active {
+  @apply text-brand-600 bg-gray-100 dark:bg-gray-800;
+}
+
+.menu-dropdown-badge {
+  @apply text-[10px] uppercase px-1.5 py-0.5 rounded-md font-bold;
+}
+
+.menu-dropdown-badge-inactive {
+  @apply bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-400;
+}
+
+.menu-dropdown-badge-active {
+  @apply bg-brand-600 text-white dark:bg-brand-400;
+}
