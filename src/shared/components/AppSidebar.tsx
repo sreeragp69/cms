@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 
-// Assume these icons are imported from an icon library
-
-// import SidebarWidget from "./SidebarWidget";
-import { CalendarHeartIcon, ChevronDownIcon, GridIcon, Home, ListIcon, PackageIcon, PieChartIcon, SettingsIcon, TableIcon, UserCircleIcon } from "lucide-react";
+import {  ChevronDownIcon, Contact, FileText, GraduationCap, Home, Info, PieChartIcon, SettingsIcon, Users } from "lucide-react";
 import { useSidebar } from "../../Context/SidebarContext";
 
 type NavItem = {
@@ -21,27 +18,27 @@ const navItems: NavItem[] = [
     path: "/",
   },
   {
-    icon: <CalendarHeartIcon />,
+    icon: <Info  />,
     name: "About",
     path: "/about",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <GraduationCap />,
     name: "Courses",
     path: "/courses",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <Users />,
     name: "Batches",
     path: "/batches",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <FileText />,
     name: "Blog",
     path: "/blog",
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <Contact />,
     name: "Contact",
     path: "/contact",
   },
@@ -79,7 +76,6 @@ const AppSidebar: React.FC = () => {
   );
   const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-  // const isActive = (path: string) => location.pathname === path;
   const isActive = useCallback(
     (path: string) => location.pathname === path,
     [location.pathname]
@@ -183,7 +179,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 <span
-                  className={`menu-item-icon-size ${
+                  className={`menu-item-icon-size text- dark:text-white! ${
                     isActive(nav.path)
                       ? "menu-item-icon-active"
                       : "menu-item-icon-inactive"
@@ -192,7 +188,7 @@ const AppSidebar: React.FC = () => {
                   {nav.icon}
                 </span>
                 {(isExpanded || isHovered || isMobileOpen) && (
-                  <span className="menu-item-text">{nav.name}</span>
+                  <span className="menu-item-text dark:text-DarkText">{nav.name}</span>
                 )}
               </Link>
             )
@@ -259,7 +255,7 @@ const AppSidebar: React.FC = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
+      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-themeBGDark dark:border-gray-800/40 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${
           isExpanded || isMobileOpen
             ? "w-[290px]"
@@ -310,7 +306,7 @@ const AppSidebar: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${
                   !isExpanded && !isHovered
                     ? "lg:justify-center"
                     : "justify-start"

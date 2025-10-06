@@ -22,19 +22,13 @@
   --color-CadetGrey: #939DB8 !important;
   --color-InputBGDark: #727DA1 !important;
   --color-InputTextDark: #202331 !important;
+  --color-DarkText: #C9D3EE !important;
 
   --color-themeGray: #1c1c1c !important;
   --color-themeRed: #f4f8ff !important;
   --color-red: #ff0000 !important;
   --color-skeletonPrimary: #a4a4a4 !important;
-/* 
-  --color-themeDisableIconColor: #5a5a5a !important;
 
-  --color-themeBorderColor: #ffffff !important;
-  --color-lightGray: #6d758f !important;
-
-  --color-themeBlueLight: #c9ddef !important;
-  --color-themeBlue: #3a648a !important; */
 
   --color-themeSidebarBg: #e8edf2;
 
@@ -245,6 +239,10 @@
   .dark body {
     background-color: var(--color-themeBackgroundColorDark);
   }
+}
+
+.border-light {
+   border: 1px solid rgba(114, 125, 161, 0.2);
 }
 
 @layer utilities {

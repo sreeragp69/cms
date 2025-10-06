@@ -1,15 +1,12 @@
-import { ChevronLeftIcon, Moon, Sun } from "lucide-react";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useTheme } from "../../../Context/ThemeContext";
 import { Field } from "../../../shared/components/Input/Field";
 import type { LoginInput } from "../schemas";
 import { loginSchema } from "../schemas";
 import Button from "../../../shared/components/Button/Button";
+import { WavyBackground } from "../../../shared/components/ui/wavy-background";
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const [values, setValues] = useState<LoginInput>({
     identifier: "",
@@ -75,7 +72,8 @@ export default function LoginPage() {
 
   return (
     <div className="flex  flex-col w-full items-center justify-center ">
-      <div className="w-full  space-y-8  p-8 rounded-lg shadow-md">
+     
+      <div className="w-full  space-y-8  p-8 ">
         <header className="mb-6 text-center">
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Hello!
@@ -106,7 +104,7 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-800"
+            className="w-full py-2 px-4 bg-InputTextDark! hover:bg-blue-700 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-800"
           >
             {loading ? "Signing in..." : "Sign in"}
           </Button>
