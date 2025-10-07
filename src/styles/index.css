@@ -240,6 +240,22 @@
     background-color: var(--color-themeBackgroundColorDark);
   }
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
+}
+:root {
+  --bg-color: white;
+}
+
+.dark {
+  --bg-color: black;
+}
 
 .border-light {
    border: 1px solid rgba(114, 125, 161, 0.2);
@@ -438,8 +454,12 @@ input:-moz-autofill {
 }
 
 .menu-item-active {
-  @apply text-brand-600 bg-gray-100 dark:bg-gray-800 dark:text-brand-400;
+  @apply text-brand-600  dark:text-brand-400 rounded-none;
 }
+/* .menu-item-active::before{
+  content: "";
+  @apply absolute top-0 left-0 w-[4.3px] h-8  bg-brand-600 rounded-r-2xl;
+} */
 
 .menu-item-icon-size {
   @apply w-6 h-6;

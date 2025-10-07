@@ -6,7 +6,7 @@ import { Dropdown } from "../dropdown/Dropdown";
 import { DropdownItem } from "../dropdown/DropdownItem";
 import { LogOut, User2 } from "lucide-react";
 
-export default function UserDropdown() {
+export default function UserDropdown({onClick}: {onClick: () => void}) {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown() {
@@ -78,6 +78,7 @@ export default function UserDropdown() {
         </ul>
         <Link
           to="/login"
+          onClick={onClick}
           className="flex items-center gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-white dark:hover:bg-white/5 dark:hover:text-gray-300"
         >
              <LogOut className="text-DarkText" />

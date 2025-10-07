@@ -7,7 +7,7 @@ export default function AuthLayout() {
   const { theme } = useTheme();
   return (
     <div className="">
-      <WavyBackground waveWidth={100} className="w-full">
+      <WavyBackground waveWidth={100}  className="w-full" speed="fast">
         <div className="grid w-full!  min-h-screen grid-cols-1 md:grid-cols-2">
           <aside className="relative hidden overflow-hidden md:block -3  rounded-br-3xl rounded-tr-3xl ">
             <div className="flex items-center justify-center bg-red">

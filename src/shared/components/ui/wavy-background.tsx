@@ -42,7 +42,7 @@ export const WavyBackground = ({
       case "slow":
         return 0.001;
       case "fast":
-        return 0.002;
+        return 0.02;
       default:
         return 0.001;
     }
@@ -80,23 +80,37 @@ export const WavyBackground = ({
   };
 
   let animationId: number;
+
 const render = () => {
-  ctx.fillStyle = backgroundFill || `${theme == "dark" ? "black" : "white"}`;
-  ctx.globalAlpha = waveOpacity || 0.5;
+  // Clear full canvas each frame
+  ctx.save();
+  ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transformations
+  ctx.clearRect(0, 0, w, h); // clear everything
+  ctx.restore();
+
+  // Background fill
+  ctx.fillStyle = backgroundFill || (theme === "dark" ? "black" : "white");
+  ctx.globalAlpha = 1;
   ctx.fillRect(0, 0, w, h);
 
-  // Rotate canvas for diagonal waves (bottom-left → top-right)
+  // Apply wave opacity
+  ctx.globalAlpha = waveOpacity || 0.5;
+
+  // Rotate for diagonal effect
   ctx.save();
   ctx.translate(w / 2, h / 2);
-  ctx.rotate((140 * Math.PI) / 180); // 45 degrees in radians
+  ctx.rotate((140 * Math.PI) / 180);
   ctx.translate(-w / 2, -h / 2);
 
+  // Draw moving waves
   drawWave(5);
 
-  ctx.restore(); // reset to normal orientation
+  ctx.restore();
 
+  // Keep animating
   animationId = requestAnimationFrame(render);
 };
+
 
   useEffect(() => {
     init();
@@ -123,7 +137,7 @@ const render = () => {
       )}
     >
       <canvas
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 blur"
         ref={canvasRef}
         id="canvas"
         style={{

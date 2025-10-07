@@ -1,12 +1,21 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Field } from "../../../shared/components/Input/Field";
 import type { LoginInput } from "../schemas";
 import { loginSchema } from "../schemas";
 import Button from "../../../shared/components/Button/Button";
-import { WavyBackground } from "../../../shared/components/ui/wavy-background";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
+
+    useEffect(() => {
+    // Create a demo user if none exists
+    if (!localStorage.getItem("user")) {
+      const demoUser = { identifier: "admin@gmail.com", password: "12345678" };
+      localStorage.setItem("user", JSON.stringify(demoUser));
+    }
+  }, []);
 
   const [values, setValues] = useState<LoginInput>({
     identifier: "",
@@ -16,6 +25,7 @@ export default function LoginPage() {
   const [errors, setErrors] = useState<
     Partial<Record<keyof LoginInput, string>>
   >({});
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const loading = isSubmitting;
@@ -40,35 +50,49 @@ export default function LoginPage() {
     }));
   }
 
-  const handleLogin = async (values: LoginInput) => {
-    // TODO: replace with real dispatch/API call
-    // await dispatch(loginThunk(values))
-    await new Promise((r) => setTimeout(r, 1200));
-    // handle success/error toasts here
-  };
-
-  async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const parsed = loginSchema.safeParse(values);
-
-    if (!parsed.success) {
-      const nextErrors: Partial<Record<keyof LoginInput, string>> = {};
-      for (const issue of parsed.error.issues) {
-        const pathKey = issue.path[0] as keyof LoginInput;
-        nextErrors[pathKey] = issue.message;
-      }
-      setErrors(nextErrors);
-      return;
-    }
-
-    try {
-      setIsSubmitting(true);
-      setErrors({});
-      await handleLogin(parsed.data);
-    } finally {
-      setIsSubmitting(false);
-    }
+const handleLogin = (values: LoginInput) => {
+  const savedUser = localStorage.getItem("user");
+  if (!savedUser) {
+    alert("No user found. Please register first!");
+    return;
   }
+
+  const user = JSON.parse(savedUser);
+
+  if (user.identifier === values.identifier && user.password === values.password) {
+    // Save login state
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+    // Alert and navigate after a short delay
+    alert("Login successful!");
+    navigate("/"); // navigate immediately after alert
+  } else {
+    alert("Invalid credentials. Try again!");
+  }
+};
+
+
+
+async function submitHandler(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
+  const parsed = loginSchema.safeParse(values);
+
+  if (!parsed.success) {
+    const nextErrors: Partial<Record<keyof LoginInput, string>> = {};
+    for (const issue of parsed.error.issues) {
+      const pathKey = issue.path[0] as keyof LoginInput;
+      nextErrors[pathKey] = issue.message;
+    }
+    setErrors(nextErrors);
+    return;
+  }
+
+  setIsSubmitting(true);
+  setErrors({});
+  handleLogin(parsed.data); // call without await
+  setIsSubmitting(false);
+}
 
   return (
     <div className="flex  flex-col w-full items-center justify-center ">
@@ -86,7 +110,7 @@ export default function LoginPage() {
             label="Email or Username"
             name="identifier"
             value={values.identifier}
-            onChange={(e) => setField("identifier", e.target.value)}
+            onChange={(val) => setField("identifier", val)} 
             error={errors.identifier}
           />
 
@@ -95,7 +119,7 @@ export default function LoginPage() {
             name="password"
             type="password"
             value={values.password}
-            onChange={(e) => setField("password", e.target.value)}
+             onChange={(val) => setField("password", val)}
             error={errors.password}
           />
 

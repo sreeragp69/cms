@@ -1,67 +1,122 @@
-import React from "react";
-import PageBreadcrumb from "./PageBreadcrumb";
-import { DollarSign, ShoppingCart, Users } from "lucide-react";
+import Stepper, { Step } from "../../shared/components/Stepper/Stepper";
+import HeroAdminSection from "./Hero";
 
 const Home = () => {
   return (
-    <div>
-      <PageBreadcrumb pageTitle="Dashboard" />
+    <div className="">
+        <Stepper
+          stepLabels={[
+            'Hero Section',
+            'About Us',
+            'Learn Latest Skills ',
+            'Achievements Section',
+            'Student Wall Section',
+            'Blog Management',
+            'Centre of Innovation',
+            'Useful Links',
+            'Centre of Innovation',
+          ]}
+          initialStep={1}
+          onStepChange={(step) => console.log('Step changed to:', step)}
+          onFinalStepCompleted={() => console.log('All steps completed!')}
+          stepContainerClassName="bg-white"
+        >
+          <Step >
+          <HeroAdminSection />
+          </Step>
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
-        <h3 className="mb-5 text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-7">
-          Dashboard
-        </h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          <CardBox 
-            title="Total Users" 
-            icon={<Users size={22} />} 
-            totalNumbers="1,234" 
-            color="from-blue-500 to-cyan-500"
-          />
-          <CardBox 
-            title="Orders" 
-            icon={<ShoppingCart size={22} />} 
-            totalNumbers="567" 
-            color="from-orange-500 to-red-500"
-          />
-          <CardBox 
-            title="Revenue" 
-            icon={<DollarSign size={22} />} 
-            totalNumbers="$12,345" 
-            color="from-green-500 to-emerald-500"
-          />
-        </div>
-      </div>
+          <Step>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Technology</h2>
+              <p className="text-gray-600 mb-4">
+                Select the technologies you'll be using.
+              </p>
+              <div className="space-y-3">
+                {['React', 'Vue', 'Angular', 'Svelte', 'Next.js'].map((tech) => (
+                  <label key={tech} className="flex items-center space-x-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                    />
+                    <span className="text-gray-700">{tech}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </Step>
+
+          <Step>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Employee</h2>
+              <p className="text-gray-600 mb-4">
+                Add team members to your project.
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Employee Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter employee name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Role
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter role"
+                  />
+                </div>
+              </div>
+            </div>
+          </Step>
+
+          <Step>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Assets & Features</h2>
+              <p className="text-gray-600 mb-4">
+                Define the assets and features for your project.
+              </p>
+              <div className="space-y-3">
+                {['Authentication', 'Database', 'API Integration', 'File Storage', 'Analytics'].map((feature) => (
+                  <label key={feature} className="flex items-center space-x-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                    />
+                    <span className="text-gray-700">{feature}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </Step>
+
+          <Step>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Other</h2>
+              <p className="text-gray-600 mb-4">
+                Any additional information or notes.
+              </p>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Additional Notes
+                </label>
+                <textarea
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  rows={6}
+                  placeholder="Enter any additional notes or requirements"
+                />
+              </div>
+            </div>
+          </Step>
+        </Stepper>
     </div>
   );
 };
 
 export default Home;
-
-interface CardBoxProps {
-  title: string;
-  icon: React.ReactNode;
-  totalNumbers: string | number;
-  color?: string; // optional: to customize icon background
-}
-
-const CardBox: React.FC<CardBoxProps> = ({ title, icon, totalNumbers, color = "from-indigo-500 to-purple-500" }) => {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-transform duration-200 hover:scale-[1.02] dark:border-gray-800 dark:bg-white/[0.05]">
-      <div className="flex items-center justify-between">
-        {/* Left side with icon */}
-        <div className="flex items-center gap-4">
-          <div
-            className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr ${color} text-white shadow-md`}
-          >
-            {icon}
-          </div>
-          <div>
-            <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</h4>
-            <p className="text-2xl font-bold text-gray-800 dark:text-white/90">{totalNumbers}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
